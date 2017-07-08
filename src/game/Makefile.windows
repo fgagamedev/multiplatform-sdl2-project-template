@@ -1,0 +1,24 @@
+#Targets
+NAME=game_$(PLATFORM)_$(MODE)
+TARGET=$(NAME).lib
+
+# Compiler setup
+INCLUDES+=/I include
+
+# Files
+SOURCES=${wildcard src/*.cpp}
+SOURCES+=${wildcard src/$(PLATFORM)/*.cpp}
+
+OBJECTS=$(SOURCES:.cpp=.obj)
+
+# Rules
+.SUFFIXES: .cpp .obj
+
+.cpp.obj:
+	$(CC) /c $< $(CFLAGS) $(INCLUDES) /Fo:$@ 
+
+all: $(TARGET)
+
+# Targets
+$(TARGET): $(OBJECTS)
+	$(AR) $(AR_FLAGS) $(OBJECTS) /OUT:$@

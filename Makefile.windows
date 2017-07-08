@@ -1,0 +1,29 @@
+export PLATFORM=windows
+
+# Compiler setup
+export CC=runcl.bat
+export CFLAGS=/W4 /nologo /EHsc
+
+RELEASE_CFLAGS=/O2
+DEBUG_CFLAGS=/Zi /Od
+
+ifeq ($(MODE),debug)
+	CFLAGS+=$(DEBUG_CFLAGS)
+else
+	CFLAGS+=$(RELEASE_CFLAGS)
+endif
+
+# Tools
+export AR=runlib.bat
+export LINKER=runlink.bat
+
+# Project subdirs
+SUBDIRS=src
+
+# Build all subdirs
+all: $(SUBDIRS)
+
+$(SUBDIRS):
+	@cd $@ && $(MAKE) -f Makefile.$(PLATFORM)
+
+.PHONY: all $(SUBDIRS)

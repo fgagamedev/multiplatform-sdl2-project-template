@@ -1,0 +1,31 @@
+# Game components
+COMPONENTS=game
+
+# Game
+GAME=test.exe
+
+MAIN=main.cpp
+OBJECT=main.obj
+
+export INCLUDES=$(foreach component,$(COMPONENTS),/I $(component)/include)
+INCLUDES+=$(foreach component,$(COMPONENTS),/I $(component)/include/$(PLATFORM))
+
+LDFLAGS=$(foreach component,$(COMPONENTS),/LIBPATH:$(component))
+LIBS=$(foreach component,$(COMPONENTS),$(component)/$(component)_$(PLATFORM)_$(MODE).lib)
+
+NAME=game_$(PLATFORM)_$(MODE)
+
+# Build all components
+all: $(COMPONENTS) $(GAME)
+
+$(COMPONENTS):
+	$(MAKE) -C $@ -f Makefile.$(PLATFORM)
+
+$(OBJECT): $(MAIN)
+	$(CC) /c $(MAIN) $(CFLAGS) $(INCLUDES) 
+
+$(GAME): $(COMPONENTS) $(OBJECT)
+	$(LINKER) $(OBJECT) $(LDFLAGS) $(LIBS) /OUT:$@
+
+.PHONY: all $(COMPONENTS)
+

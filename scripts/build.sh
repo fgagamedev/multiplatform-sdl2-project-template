@@ -15,10 +15,10 @@ function build()
     then
         platform="linux";
     else
-        platform="unknown";
+        platform="windows";
     fi
 
-    #echo $platform
+    echo $platform
 
     make -f Makefile.$platform MODE=$mode
 }
