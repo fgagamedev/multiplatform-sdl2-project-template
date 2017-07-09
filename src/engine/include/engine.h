@@ -16,7 +16,6 @@ public:
     int start();
 
 private:
-    bool test;
     unique_ptr<pImplEngine> pImp;
 };
 

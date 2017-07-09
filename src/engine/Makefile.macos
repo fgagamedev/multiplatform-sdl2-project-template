@@ -1,9 +1,9 @@
 #Targets
-NAME=game_$(PLATFORM)_$(MODE)
+NAME=engine_$(PLATFORM)_$(MODE)
 TARGET=lib$(NAME).a
 
 # Compiler setup
-INCLUDES=-Iinclude -I../engine/include
+INCLUDES=-Iinclude -I../../lib/SDL/$(PLATFORM)/include
 
 # Files
 SOURCES=${wildcard src/*.cpp}

@@ -1,6 +1,7 @@
 # Game components
 COMPONENTS=game engine
 EXTERNAL_LIBS=SDL
+
 # Game
 GAME=test
 MAIN=main.cpp

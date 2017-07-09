@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+src/test
 
 # Swap files
 *~
@@ -39,3 +40,7 @@
 # Visual Studio files
 *.idb
 *.pdb
+
+# MacOS files
+*.DS_Store
+*.dSYM
