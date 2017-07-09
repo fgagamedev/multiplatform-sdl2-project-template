@@ -15,7 +15,7 @@ Git must be installed on all platforms. The following sections describes the dep
 
 ### Windows
 
-- Cygwin (GNU MAKE must be installed)
+- Cygwin (GNU Make must be installed)
 - Visual Studio (cl.exe, lib.exe and link.exe)
 
 The Visual Studio compiler `cl.exe` needs a proper setup to work in Cygwin. Put the script `runcl.bat` below in your PATH:
@@ -31,4 +31,4 @@ The Visual Studio compiler `cl.exe` needs a proper setup to work in Cygwin. Put 
 
 Do the same for the `lib.exe` and `link.exe` (scripts `runlib.bat` and `runlink.bat`), changing only the last line, replacing `cl.exe` for the proper tool.
 
-Visual Studio Community does not install C++ suport by default. You must select C++ on installer manually.
+Visual Studio Community does not install C++ support by default. You must select C++ on installer manually.
