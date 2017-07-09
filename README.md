@@ -32,3 +32,10 @@ The Visual Studio compiler `cl.exe` needs a proper setup to work in Cygwin. Put 
 Do the same for the `lib.exe` and `link.exe` (scripts `runlib.bat` and `runlink.bat`), changing only the last line, replacing `cl.exe` for the proper tool.
 
 Visual Studio Community does not install C++ suport by default. You must select C++ on installer manually.
+
+### Mac OSX
+
+- GNU Make
+- Bash
+- ar
+- clang

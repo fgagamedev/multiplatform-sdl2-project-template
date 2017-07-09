@@ -1,0 +1,26 @@
+# Game components
+COMPONENTS=game
+
+# Game
+GAME=test
+MAIN=main.cpp
+
+INCLUDES=$(foreach component,$(COMPONENTS),-I$(component)/include)
+INCLUDES+=$(foreach component,$(COMPONENTS),-I$(component)/include/$(PLATFORM))
+
+LDFLAGS=$(foreach component,$(COMPONENTS),-L$(component))
+LIBS=$(foreach component,$(COMPONENTS),-l$(component)_$(PLATFORM)_$(MODE))
+
+NAME=game_$(PLATFORM)_$(MODE)
+
+# Build all components
+all: $(COMPONENTS) $(GAME)
+
+$(COMPONENTS):
+	$(MAKE) -C $@ -f Makefile.$(PLATFORM)
+
+.PHONY: all $(COMPONENTS)
+
+
+$(GAME): $(COMPONENTS) $(MAIN)
+	$(CC) -o $@ $(MAIN) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(LIBS)

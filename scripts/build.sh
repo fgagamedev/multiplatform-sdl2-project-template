@@ -9,16 +9,15 @@ function build()
 {
     platform=`uname -a`
 
-    #echo $platform
-
     if [[ "$platform" =~ "Linux" ]];
     then
         platform="linux";
+    elif [[ "$platform" =~ "Darwin" ]];
+	then
+    	platform="macos";	
     else
         platform="windows";
     fi
-
-    echo $platform
 
     make -f Makefile.$platform MODE=$mode
 }
