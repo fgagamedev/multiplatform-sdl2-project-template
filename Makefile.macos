@@ -1,0 +1,29 @@
+export PLATFORM=macos
+
+# Compiler setup
+export CC=clang
+export CFLAGS=-W -Wall -Werror -std=c++11
+
+RELEASE_CFLAGS=-O2
+DEBUG_CFLAGS=-g -O0
+
+ifeq ($(MODE),debug)
+	CFLAGS+=$(DEBUG_CFLAGS)
+else
+	CFLAGS+=$(RELEASE_CFLAGS)
+endif
+
+# Tools
+export AR=ar
+export AR_FLAGS=rcs
+
+# Project subdirs
+SUBDIRS=src
+
+# Build all subdirs
+all: $(SUBDIRS)
+
+$(SUBDIRS):
+	@cd $@ && $(MAKE) -f Makefile.$(PLATFORM)
+
+.PHONY: all $(SUBDIRS)
