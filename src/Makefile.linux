@@ -1,17 +1,22 @@
 # Game components
-COMPONENTS=game
-
+COMPONENTS=game engine
+EXTERNAL_LIBS=SDL
 # Game
 GAME=test
 MAIN=main.cpp
 
 INCLUDES=$(foreach component,$(COMPONENTS),-I$(component)/include)
 INCLUDES+=$(foreach component,$(COMPONENTS),-I$(component)/include/$(PLATFORM))
+INCLUDES+=$(foreach lib,$(EXTERNAL_LIBS),-I../lib/$(lib)/$(PLATFORM)/include/)
 
 LDFLAGS=$(foreach component,$(COMPONENTS),-L$(component))
+LDFLAGS+=$(foreach lib,$(EXTERNAL_LIBS),-L../lib/$(lib)/$(PLATFORM)/$(MODE))
+
 LIBS=$(foreach component,$(COMPONENTS),-l$(component)_$(PLATFORM)_$(MODE))
+LIBS+=$(foreach lib,$(EXTERNAL_LIBS),-l$(lib))
 
 NAME=game_$(PLATFORM)_$(MODE)
+
 # Build all components
 all: $(COMPONENTS) $(GAME)
 
@@ -20,7 +25,5 @@ $(COMPONENTS):
 
 .PHONY: all $(COMPONENTS)
 
-
 $(GAME): $(COMPONENTS) $(MAIN)
-	@echo "includes = " $(INCLUDES)
 	$(CC) -o $@ $(MAIN) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(LIBS)

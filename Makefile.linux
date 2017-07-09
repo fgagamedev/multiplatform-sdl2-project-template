@@ -17,13 +17,4 @@ endif
 export AR=ar
 export AR_FLAGS=rcs
 
-# Project subdirs
-SUBDIRS=src
-
-# Build all subdirs
-all: $(SUBDIRS)
-
-$(SUBDIRS):
-	@cd $@ && $(MAKE) -f Makefile.$(PLATFORM)
-
-.PHONY: all $(SUBDIRS)
+include Makefile.common
