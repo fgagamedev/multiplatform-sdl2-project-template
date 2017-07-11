@@ -17,4 +17,4 @@ endif
 export AR=runlib.bat
 export LINKER=runlink.bat
 
-include Makefile.inc
+include Makefile.common

@@ -1,9 +1,9 @@
 #Targets
-NAME=game_$(PLATFORM)_$(MODE)
+NAME=engine_$(PLATFORM)_$(MODE)
 TARGET=$(NAME).lib
 
 # Compiler setup
-INCLUDES+=/I include /I ../engine/include
+INCLUDES+=/I include /I ../../lib/SDL/$(PLATFORM)/include
 
 # Files
 SOURCES=${wildcard src/*.cpp}
@@ -15,6 +15,7 @@ OBJECTS=$(SOURCES:.cpp=.obj)
 .SUFFIXES: .cpp .obj
 
 .cpp.obj:
+	@echo "Aqui"
 	$(CC) /c $< $(CFLAGS) $(INCLUDES) /Fo:$@ 
 
 all: $(TARGET)
