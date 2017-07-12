@@ -24,7 +24,7 @@ all: $(COMPONENTS) $(GAME)
 $(COMPONENTS):
 	$(MAKE) -C $@ -f Makefile.$(PLATFORM)
 
-.PHONY: all $(COMPONENTS)
-
 $(GAME): $(COMPONENTS) $(MAIN)
 	$(CC) -o $@ $(MAIN) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(LIBS)
+
+.PHONY: all $(COMPONENTS)

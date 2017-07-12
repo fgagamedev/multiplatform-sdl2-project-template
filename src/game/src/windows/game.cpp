@@ -1,4 +1,5 @@
 #include "game.h"
+#include "engine.h"
 
 #include "iostream"
 
@@ -10,6 +11,9 @@ int run(int argc, char *argv[])
         printf("Hello Windows with first arg = [%s]\n", argv[1]);
     else
         printf("Hello Windows without args\n");
+
+    Engine engine;
+    printf("Engine start returned %d\n", engine.start());
 
     return 0;
 }

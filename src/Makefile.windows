@@ -1,5 +1,6 @@
 # Game components
-COMPONENTS=game
+COMPONENTS=engine game
+EXTERNAL_LIBS=SDL
 
 # Game
 GAME=test.exe
@@ -7,11 +8,16 @@ GAME=test.exe
 MAIN=main.cpp
 OBJECT=main.obj
 
-export INCLUDES=$(foreach component,$(COMPONENTS),/I $(component)/include)
+INCLUDES=$(foreach component,$(COMPONENTS),/I $(component)/include)
 INCLUDES+=$(foreach component,$(COMPONENTS),/I $(component)/include/$(PLATFORM))
+INCLUDES+=$(foreach lib,$(EXTERNAL_LIBS),/I ../lib/$(lib)/$(PLATFORM)/include/)
 
 LDFLAGS=$(foreach component,$(COMPONENTS),/LIBPATH:$(component))
+LDFLAGS+=$(foreach lib,$(EXTERNAL_LIBS),/LIBPATH:../lib/$(lib)/$(PLATFORM)/$(MODE))
+
 LIBS=$(foreach component,$(COMPONENTS),$(component)/$(component)_$(PLATFORM)_$(MODE).lib)
+LIBS+=$(foreach lib,$(EXTERNAL_LIBS),$(lib).lib)
+LIBS+=SDLmain.lib
 
 NAME=game_$(PLATFORM)_$(MODE)
 
