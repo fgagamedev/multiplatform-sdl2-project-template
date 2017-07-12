@@ -44,3 +44,6 @@ src/test
 # MacOS files
 *.DS_Store
 *.dSYM
+bin
+src/test_debug
+src/test_release
