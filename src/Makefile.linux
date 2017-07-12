@@ -3,7 +3,7 @@ COMPONENTS=game engine
 EXTERNAL_LIBS=SDL
 
 # Game
-GAME=test
+GAME=test_$(MODE)
 MAIN=main.cpp
 
 INCLUDES=$(foreach component,$(COMPONENTS),-I$(component)/include)
