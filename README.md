@@ -12,6 +12,10 @@ Git must be installed on all platforms. The following sections describes the dep
 - Bash
 - ar
 - g++-4.8 or greater
+- dpkg-deb  (for Debian package)
+- fakeroot
+- lintian
+- gzip
 
 ### Windows
 

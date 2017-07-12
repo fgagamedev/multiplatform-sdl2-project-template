@@ -1,0 +1,10 @@
+Package: test
+Version: 1.0-1
+Section: games
+Priority: optional
+Architecture: amd64
+Depends: libc6
+Maintainer: Your Name <you@email.com>
+Description: Short description
+ Long description
+ The space before each line is important

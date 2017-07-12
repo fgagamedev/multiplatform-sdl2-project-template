@@ -26,5 +26,6 @@ $(COMPONENTS):
 
 $(GAME): $(COMPONENTS) $(MAIN)
 	$(CC) -o $@ $(MAIN) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(LIBS)
+	@strip $(GAME)
 
 .PHONY: all $(COMPONENTS)
