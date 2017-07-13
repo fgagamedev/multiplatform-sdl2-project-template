@@ -37,16 +37,20 @@ src/test
 *.swp
 *.swo
 
-# Visual Studio files
+# Project files
+bin
+
+# Windows files
 *.idb
 *.pdb
+.tmp
 
 # MacOS files
 *.DS_Store
 *.dSYM
-bin
+.dmg
+
+# Linux files
 src/test_debug
 src/test_release
-.tmp
-.dmg
-*.dmg
+.deb

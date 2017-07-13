@@ -1,6 +1,6 @@
 # Game components
 COMPONENTS=game engine
-EXTERNAL_LIBS=SDL
+EXTERNAL_LIBS=SDL SDL_image
 
 # Game
 GAME=test_$(MODE)
