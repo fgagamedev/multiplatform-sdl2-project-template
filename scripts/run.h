@@ -14,6 +14,16 @@ function run_linux()
     bin/linux/$game\_$mode
 }
 
+function run_macos()
+{
+	mkdir -p bin/macos
+	ln -f src/$game bin/macos
+	
+	mkdir -p bin/macos/framework
+	cp -r lib/SDL/macos/release/SDL.framework bin/macos/framework/
+	bin/macos/$game
+}
+
 function run()
 {
     platform=`uname -a`
@@ -23,7 +33,7 @@ function run()
         run_linux
     elif [[ "$platform" =~ "Darwin" ]];
 	then
-    	platform="macos";	
+    	run_macos
     else
         platform="windows";
     fi

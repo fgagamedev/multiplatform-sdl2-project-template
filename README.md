@@ -51,3 +51,4 @@ Visual Studio Community does not install C++ support by default. You must select
 - Bash
 - ar
 - clang
+- create-dmg (https://github.com/andreyvit/create-dmg/blob/master/README.md)

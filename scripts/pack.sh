@@ -104,6 +104,17 @@ function gen_win()
 	light.exe -sice:ICE60 $project.wixobj
 }
 
+function gen_dmg()
+{
+	mkdir -p .dmg
+	cp -u src/$project .dmg/
+	
+	mkdir -p .dmg/framework
+	cp -u lib/SDL/macos/release/* .dmg/framework
+	
+	
+}
+
 function pack()
 {
     platform=`uname -a`
@@ -115,7 +126,7 @@ function pack()
         echo "Done";
     elif [[ "$platform" =~ "Darwin" ]];
 	then
-    	platform="macos";	
+    	gen_dmg;	
     else
         gen_win;
     fi
