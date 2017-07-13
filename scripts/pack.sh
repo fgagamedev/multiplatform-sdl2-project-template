@@ -91,6 +91,19 @@ function gen_deb()
     lintian $package_name.deb
 }
 
+function gen_win()
+{
+	mkdir -p .tmp
+	cp -u src/$project.exe .tmp/
+	cp -u lib/SDL/windows/release/*.dll .tmp/
+	cp -u dist/windows/$project.wxs .tmp/
+	cp -u dist/windows/Manual.pdf .tmp/
+
+	cd .tmp 
+	candle.exe $project.wxs
+	light.exe -sice:ICE60 $project.wixobj
+}
+
 function pack()
 {
     platform=`uname -a`
@@ -104,7 +117,7 @@ function pack()
 	then
     	platform="macos";	
     else
-        platform="windows";
+        gen_win;
     fi
 }
 

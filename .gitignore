@@ -47,3 +47,4 @@ src/test
 bin
 src/test_debug
 src/test_release
+.tmp
