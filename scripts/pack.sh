@@ -80,7 +80,7 @@ function gen_deb()
     echo "Done"
 }
 
-function gen_win()
+function gen_exe()
 {
 	mkdir -p .tmp
 	cp -u src/$project.exe .tmp/
@@ -126,4 +126,22 @@ function pack()
 }
 
 # Main
-pack
+platform=`scripts/util/get_platform.sh`
+
+case $platform in
+    "linux")
+        gen_deb
+        ;;
+
+    "windows")
+        gen_exe
+        ;;
+
+    "macos")
+        gen_dmg
+        ;;
+
+    *)
+        echo "Invalid platform! ("$platform")"
+        exit 1
+esac

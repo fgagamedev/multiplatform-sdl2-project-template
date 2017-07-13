@@ -53,4 +53,4 @@ bin
 # Linux files
 src/test_debug
 src/test_release
-.deb
+*.deb
