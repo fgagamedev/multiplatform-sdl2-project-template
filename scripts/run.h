@@ -19,8 +19,8 @@ function run_macos()
 	mkdir -p bin/macos
 	ln -f src/$game bin/macos
 	
-	mkdir -p bin/macos/framework
-	cp -r lib/SDL/macos/release/SDL.framework bin/macos/framework/
+	mkdir -p bin/macos/Frameworks
+	cp -r lib/SDL/macos/release/SDL.framework bin/macos/Frameworks/
 	bin/macos/$game
 }
 

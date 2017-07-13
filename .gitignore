@@ -48,3 +48,5 @@ bin
 src/test_debug
 src/test_release
 .tmp
+.dmg
+*.dmg

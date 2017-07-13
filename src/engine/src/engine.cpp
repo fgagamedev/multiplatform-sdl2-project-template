@@ -29,11 +29,8 @@ Engine::start()
     
     if (screen == NULL)
     	fprintf(stderr, "Can't initialize SDL video: %s\n", SDL_GetError());
-    else
-    {
-    	printf("Screen pointer = %p\n", screen);	
+    else	
     	SDL_Delay(2000);
-    }
 
     return 0;
 }

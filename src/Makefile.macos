@@ -30,4 +30,4 @@ $(COMPONENTS):
 # In MacOS the flag -rpath allows run dynamic libraries on non-standard locations,
 # relative to the executable execution
 $(GAME): $(COMPONENTS) $(MAIN)
-	$(CC) -o $@ $(MAIN) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(LIBS) -rpath @executable_path/framework
+	$(CC) -o $@ $(MAIN) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(LIBS) -rpath @executable_path/Frameworks

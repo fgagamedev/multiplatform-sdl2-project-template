@@ -102,17 +102,23 @@ function gen_win()
 	cd .tmp 
 	candle.exe $project.wxs
 	light.exe -sice:ICE60 $project.wixobj
+	cd ..
 }
 
 function gen_dmg()
 {
-	mkdir -p .dmg
-	cp -u src/$project .dmg/
+	base_dir=.dmg/Test
+	mkdir -p $base_dir	
+	cp -f src/$project $base_dir
 	
-	mkdir -p .dmg/framework
-	cp -u lib/SDL/macos/release/* .dmg/framework
+	mkdir -p $base_dir/Frameworks
+	cp -R lib/SDL/macos/release/* $base_dir/Frameworks
 	
-	
+	cd .dmg
+	rm -f $project.dmg
+	create_dmg --volname "Test Installer" --window-pos 200 120 --window-size 800 400 --app-drop-link 600 185 $project.dmg .
+	cp *.dmg ..
+	cd ..
 }
 
 function pack()
