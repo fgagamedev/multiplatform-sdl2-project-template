@@ -28,6 +28,6 @@ export STATIC_LIB_PREFIX=lib
 export OBJ_EXTENSION=.o
 
 # Platform specific libs
-export LIBS=-lcaca -lwebp
+export LIBS=-lcaca -lwebp -lpng12 -ljpeg
 
 include Makefile.common
