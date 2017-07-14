@@ -4,6 +4,7 @@
 #
 
 mode=$1
+. metadata.ini
 
 function build()
 {
@@ -19,7 +20,7 @@ function build()
         platform="windows";
     fi
 
-    make -f Makefile.$platform MODE=$mode
+    make -f Makefile.$platform MODE=$mode EXECUTABLE_NAME=$EXECUTABLE_NAME
 }
 
 # Main

@@ -70,6 +70,9 @@ function gen_deb()
     chmod 755 $exec_dir/$EXECUTABLE_NAME
     chmod 755 $install_dir/$EXECUTABLE_NAME
 
+    # Strip executable debug symbols
+    strip $install_dir/$EXECUTABLE_NAME
+
     # Build and check the package
     fakeroot dpkg-deb --build $tmp_dir
     mv /tmp/$OUTPUT_FILE .

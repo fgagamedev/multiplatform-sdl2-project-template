@@ -4,14 +4,24 @@
 #
 
 mode=$1
+. metadata.ini
+
 game=test
 
 function run_linux()
 {
+    rm -rf bin/linux
     mkdir -p bin/linux
-    ln -f src/$game\_$mode bin/linux
-    ln -f lib/SDL/linux/$mode/lib* bin/linux/
-    bin/linux/$game\_$mode
+    ln -f src/$EXECUTABLE_NAME\_$mode bin/linux
+
+    dirs=`ls -d lib/*/`
+
+    for dir in $dirs;
+    do
+        cp -P $dir"linux/"$mode/* bin/linux/
+    done;
+
+    LD_LIBRARY_PATH=bin/linux bin/linux/$EXECUTABLE_NAME\_$mode
 }
 
 function run_macos()

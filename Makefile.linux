@@ -17,4 +17,14 @@ endif
 export AR=ar
 export AR_FLAGS=rcs
 
+# Environment variables
+export INCLUDES_FLAG=-I
+export LIBPATH_FLAG=-L
+export LIBS_FLAG=-l
+export OUTPUT_FLAG=-o
+export GEN_OBJECT_FLAG=-c
+
+# Platform specific libs
+export LIBS=-lcaca -lwebp
+
 include Makefile.common

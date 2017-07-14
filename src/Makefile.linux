@@ -1,31 +1,18 @@
-# Game components
-COMPONENTS=game engine
-EXTERNAL_LIBS=SDL SDL_image
-
 # Game
-GAME=test_$(MODE)
-MAIN=main.cpp
+SOURCES=${wildcard *.cpp}
+OBJECTS=$(SOURCES:.cpp=.o)
 
-INCLUDES=$(foreach component,$(COMPONENTS),-I$(component)/include)
-INCLUDES+=$(foreach component,$(COMPONENTS),-I$(component)/include/$(PLATFORM))
-INCLUDES+=$(foreach lib,$(EXTERNAL_LIBS),-I../lib/$(lib)/$(PLATFORM)/include/)
+# Rules
+.cpp.o:
+	$(CC) $(GEN_OBJECT_FLAG) $< $(OUTPUT_FLAG) $@ $(CFLAGS) $(INCLUDES)
 
-LDFLAGS=$(foreach component,$(COMPONENTS),-L$(component))
-LDFLAGS+=$(foreach lib,$(EXTERNAL_LIBS),-L../lib/$(lib)/$(PLATFORM)/$(MODE))
-
-LIBS=$(foreach component,$(COMPONENTS),-l$(component)_$(PLATFORM)_$(MODE))
-LIBS+=$(foreach lib,$(EXTERNAL_LIBS),-l$(lib))
-
-NAME=game_$(PLATFORM)_$(MODE)
-
-# Build all components
+# Build the game
 all: $(COMPONENTS) $(GAME)
 
 $(COMPONENTS):
 	$(MAKE) -C $@ -f Makefile.$(PLATFORM)
 
-$(GAME): $(COMPONENTS) $(MAIN)
-	$(CC) -o $@ $(MAIN) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(LIBS)
-	@strip $(GAME)
+$(GAME): $(COMPONENTS) $(OBJECTS)
+	$(CC) $(OUTPUT_FLAG) $@ $(OBJECTS) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(LIBS)
 
 .PHONY: all $(COMPONENTS)
