@@ -33,6 +33,10 @@ function gen_deb()
         cp -P lib/$extlib/linux/release/* $lib_dir;
     done
 
+    # Removing embedded libraries
+    rm $lib_dir/libjpeg*
+    rm $lib_dir/libpng*
+
     resources_dir=$install_dir/resources
     mkdir -p $resources_dir
 
