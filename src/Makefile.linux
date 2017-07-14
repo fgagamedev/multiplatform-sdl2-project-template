@@ -1,9 +1,9 @@
 # Game
 SOURCES=${wildcard *.cpp}
-OBJECTS=$(SOURCES:.cpp=.o)
+OBJECTS=$(SOURCES:.cpp=$(OBJ_EXTENSION))
 
 # Rules
-.cpp.o:
+.cpp$(OBJ_EXTENSION):
 	$(CC) $(GEN_OBJECT_FLAG) $< $(OUTPUT_FLAG) $@ $(CFLAGS) $(INCLUDES)
 
 # Build the game

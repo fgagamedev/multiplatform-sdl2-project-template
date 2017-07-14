@@ -48,6 +48,11 @@ function gen_deb()
     # Debian package info dir
     mkdir -p $tmp_dir/DEBIAN
     cp dist/linux/debian/control $tmp_dir/DEBIAN/
+    sed -i -- 's/%%PACKAGE_NAME%%/'$PACKAGE_NAME'/' $tmp_dir/DEBIAN/control
+    sed -i -- 's/%%PACKAGE_VERSION%%/'$PACKAGE_VERSION'/' $tmp_dir/DEBIAN/control
+    sed -i -- 's/%%MAINTAINER_NAME%%/'$MAINTAINER_NAME'/' $tmp_dir/DEBIAN/control
+    sed -i -- 's/%%MAINTAINER_CONTACT%%/'$MAINTAINER_CONTACT'/' $tmp_dir/DEBIAN/control
+    sed -i -- 's/%%GAME_DESCRIPTION%%/'"$GAME_DESCRIPTION"'/' $tmp_dir/DEBIAN/control
 
     # Documentation
     share_dir=$tmp_dir/usr/share

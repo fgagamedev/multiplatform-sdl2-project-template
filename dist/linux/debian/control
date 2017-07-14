@@ -1,10 +1,10 @@
-Package: test
-Version: 1.0-2
+Package: %%PACKAGE_NAME%%
+Version: %%PACKAGE_VERSION%%
 Section: games
 Priority: optional
 Architecture: amd64
 Depends: libc6
-Maintainer: Your Name <you@email.com>
-Description: Short description
+Maintainer: %%MAINTAINER_NAME%% <%%MAINTAINER_CONTACT%%>
+Description: %%GAME_DESCRIPTION%%
  Long description
  The space before each line is important

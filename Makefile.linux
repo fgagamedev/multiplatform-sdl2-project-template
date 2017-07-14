@@ -23,6 +23,9 @@ export LIBPATH_FLAG=-L
 export LIBS_FLAG=-l
 export OUTPUT_FLAG=-o
 export GEN_OBJECT_FLAG=-c
+export STATIC_LIB_EXTENSION=.a
+export STATIC_LIB_PREFIX=lib
+export OBJ_EXTENSION=.o
 
 # Platform specific libs
 export LIBS=-lcaca -lwebp
