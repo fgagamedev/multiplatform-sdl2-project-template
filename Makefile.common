@@ -18,10 +18,10 @@ EXTERNAL_LIBS_PATHS=$(shell ls -d $(PWD)/lib/*/)
 export INCLUDES+=$(foreach lib,$(EXTERNAL_LIBS_PATHS),$(INCLUDES_FLAG)$(lib)$(PLATFORM)/include/)
 
 LDFLAGS+=$(foreach component,$(COMPONENTS_PATHS),$(LIBPATH_FLAG)$(component))
-export LDFLAGS+=$(foreach lib,$(EXTERNAL_LIBS_PATHS),$(LIBPATH_FLAG)$(lib)$(PLATFORM)/$(MODE))
+export LDFLAGS+=$(foreach lib,$(EXTERNAL_LIBS_PATHS),$(EXT_LIBPATH_FLAG)$(lib)$(PLATFORM)/$(MODE))
 
 LIBS+=$(foreach component,$(COMPONENTS),$(LIBS_FLAG)$(component)_$(PLATFORM)_$(MODE))
-export LIBS+=$(foreach lib,$(EXTERNAL_LIBS),-l$(lib))
+export LIBS+=$(foreach lib,$(EXTERNAL_LIBS),$(EXT_LIBS_FLAG)$(lib))
 
 # Build subdir
 all: $(SUBDIR)

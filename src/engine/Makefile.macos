@@ -1,19 +1,16 @@
 #Targets
 NAME=engine_$(PLATFORM)_$(MODE)
-TARGET=lib$(NAME).a
-
-# Compiler setup
-INCLUDES=-Iinclude -I../../lib/SDL/$(PLATFORM)/include
+TARGET=$(STATIC_LIB_PREFIX)$(NAME)$(STATIC_LIB_EXTENSION)
 
 # Files
 SOURCES=${wildcard src/*.cpp}
 SOURCES+=${wildcard src/$(PLATFORM)/*.cpp}
 
-OBJECTS=$(SOURCES:.cpp=.o)
+OBJECTS=$(SOURCES:.cpp=$(OBJ_EXTENSION))
 
 # Rules
-.cpp.o:
-	$(CC) -c $< -o $@ $(CFLAGS) $(INCLUDES)
+.cpp$(OBJ_EXTENSION):
+	$(CC) $(GEN_OBJECT_FLAG) $< $(OUTPUT_FLAG) $@ $(CFLAGS) $(INCLUDES)
 
 all: $(TARGET)
 

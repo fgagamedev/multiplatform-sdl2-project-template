@@ -6,7 +6,7 @@
 mode=$1
 . metadata.ini
 
-game=test
+game=$EXECUTABLE_NAME
 
 function run_linux()
 {
@@ -26,12 +26,19 @@ function run_linux()
 
 function run_macos()
 {
-	mkdir -p bin/macos
-	ln -f src/$game bin/macos
+	mkdir -p bin/macos/MacOS
+	ln -f src/$game\_$mode bin/macos/MacOS/
 	
 	mkdir -p bin/macos/Frameworks
-	cp -r lib/SDL/macos/release/SDL.framework bin/macos/Frameworks/
-	bin/macos/$game
+	
+	dirs=`ls -d lib/*/`
+	
+	for dir in $dirs;
+    do
+        cp -r $dir"macos/"$mode/* bin/macos/Frameworks/
+    done;
+    
+	bin/macos/MacOS/$game\_$mode
 }
 
 function run()

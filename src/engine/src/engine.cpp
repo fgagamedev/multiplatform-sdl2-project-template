@@ -34,7 +34,7 @@ Engine::start()
     {
         printf("Loading image...\n");
 
-        auto *img = IMG_Load("resources/images/logo.jpg");
+        auto *img = IMG_Load("resources/images/logo.png");
 
         if (img == NULL)
             printf("Can't load logo image: %s\n", SDL_GetError());
@@ -47,8 +47,6 @@ Engine::start()
             r.h = img->h;
 
             SDL_BlitSurface(img, NULL, screen, &r);
-            SDL_Flip(screen);
-
             SDL_FreeSurface(img);
 
             SDL_Delay(2000);
@@ -69,6 +67,7 @@ Engine::start()
                     }
                 }
 
+				SDL_Flip(screen);
                 SDL_Delay(2);
                 ++tries;
             }
