@@ -25,6 +25,6 @@ export OUTPUT_FLAG=-o
 export GEN_OBJECT_FLAG=-c
 
 # Platform specific libs
-export LIBS=-lcaca -lwebp
+export LIBS=-lcaca -lwebp -lpng12 -ljpeg
 
 include Makefile.common
