@@ -17,6 +17,8 @@ public:
 
 private:
     unique_ptr<pImplEngine> pImp;
+
+	string resources_dir_path() const;
 };
 
 #endif

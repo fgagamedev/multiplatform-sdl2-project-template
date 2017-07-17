@@ -26,6 +26,8 @@ function run_linux()
 
 function run_macos()
 {
+	rm -rf bin/macos
+	
 	mkdir -p bin/macos/MacOS
 	ln -f src/$game\_$mode bin/macos/MacOS/
 	
@@ -38,6 +40,7 @@ function run_macos()
         cp -r $dir"macos/"$mode/* bin/macos/Frameworks/
     done;
     
+    ln -s $(PWD)/resources bin/macos/Resources
 	bin/macos/MacOS/$game\_$mode
 }
 

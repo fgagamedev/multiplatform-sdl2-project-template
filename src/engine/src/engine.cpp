@@ -1,5 +1,9 @@
 #include <SDL.h>
 #include <SDL_image.h>
+#include <fstream>
+#include <cstdlib>
+
+using namespace std;
 
 #include "engine.h"
 
@@ -29,16 +33,18 @@ Engine::start()
     auto *screen = SDL_SetVideoMode(800, 600, 32, SDL_DOUBLEBUF);
     
     if (screen == NULL)
-    	fprintf(stderr, "Can't initialize SDL video: %s\n", SDL_GetError());
+    	cerr << "Can't initialize SDL video: " << SDL_GetError() << endl;
     else
     {
         printf("Loading image...\n");
 
-        auto *img = IMG_Load("resources/images/logo.png");
-
+        auto path = resources_dir_path() + "images/logo.png";
+        auto *img = IMG_Load(path.c_str());
+        
         if (img == NULL)
-            printf("Can't load logo image: %s\n", SDL_GetError());
-        else
+        {
+            cerr << "Can't load logo image:" << SDL_GetError() << endl;
+        } else
         {
             SDL_Rect r;
             r.x = (screen->w - img->w)/2;
