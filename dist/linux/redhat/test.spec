@@ -4,11 +4,12 @@ Release: %%VERSION_RELEASE%%%{?dist}
 Summary: %%GAME_DESCRIPTION%%
 
 Group: Amusements/Games
-License: GPL
-URL: package_github_page
+License: GPLv3
+URL: https://github.com/fgagamedev/multiplatform-sdl2-project-template
 Source0: %{name}.tar.gz
 
 BuildRoot: %{_tmppath}/%{name}-root
+Provides: libSDL-1.2.so.0()(64bit) libcaca.so.0
 
 %description
 Long package description
@@ -22,25 +23,43 @@ Long package description
 
 
 %install
-mkdir %{buildroot}/var/games/%{name}/lib
-cp src/${name}_release %{buildroot}/var/games/%{name}/%{name}
+mkdir -p %{buildroot}/var/games/%%PACKAGE_NAME%%/lib
+cp src/%%PACKAGE_NAME%%_release %{buildroot}/var/games/%%PACKAGE_NAME%%/%%PACKAGE_NAME%%
 
+# Copying libraries
 for extlib in `ls lib`;
 do
-    cp -P lib/$extlib/linux/release/* %{buildroot}/var/games/%{name}/lib;
+    cp -P lib/$extlib/linux/release/*.so.* %{buildroot}/var/games/%%PACKAGE_NAME%%/lib;
 done
 
-mkdir %{buildroot}/var/games/%{name}/resources
-cp -r resources/*  %{buildroot}/var/games/%{name}/resources/
+# Removing extra symbolic links
 
-mkdir %{buildroot}/usr/games/
-cp -P dist/linux/redhat/%{name} %{buildroot}/usr/games/
+mkdir -p %{buildroot}/var/games/%%PACKAGE_NAME%%/resources
+cp -r resources/*  %{buildroot}/var/games/%%PACKAGE_NAME%%/resources/
+
+mkdir -p %{buildroot}/usr/games/
+cp -P dist/linux/redhat/%%PACKAGE_NAME%% %{buildroot}/usr/games/
+
+mkdir -p %{buildroot}/%{_mandir}/man6
+cp dist/linux/debian/%%PACKAGE_NAME%%.6 %{buildroot}/%{_mandir}/man6
+gzip -9 %{buildroot}/%{_mandir}/man6/%%PACKAGE_NAME%%.6
+
+# Set the correct permissions for shared libraries
+find %{buildroot} -type f \( -name '*.so' -o -name '*.so.*' \) -exec chmod 755 {} \;
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
 
 %files
-%attr(755,root,root) %{buildroot]}/usr/games/%{name}
-%attr(755,root,root) %{buildroot]}/var/games/%{name}
 %defattr(644,root,root)
-%{buildroot]}/var/games/%{name}/
-
+%attr(755,root,root) /usr/games/%%PACKAGE_NAME%%
+%attr(755,root,root) /var/games/%%PACKAGE_NAME%%/%%PACKAGE_NAME%%
+%attr(755,root,root) /var/games/%%PACKAGE_NAME%%
+%attr(755,root,root) /var/games/%%PACKAGE_NAME%%/resources
+%attr(755,root,root) /var/games/%%PACKAGE_NAME%%/lib
+%doc %{_mandir}/man6/%%PACKAGE_NAME%%.6.gz
 
 %changelog
+* Fri Jul 21 2017 Edson Alves <edsomjr@gmail.com>  - 1.0-1%{?dist}
+- Fixing several rpmlintian errors and warnings

@@ -54,3 +54,4 @@ bin
 src/test_debug
 src/test_release
 *.deb
+*.rpm
