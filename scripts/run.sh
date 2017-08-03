@@ -8,6 +8,22 @@ mode=$1
 
 game=$EXECUTABLE_NAME
 
+function run_windows()
+{    
+	rm -rf bin/windows
+    mkdir -p bin/windows
+    ln -f src/$EXECUTABLE_NAME\_$mode bin/windows
+
+    dirs=`ls -d lib/*/`
+
+    for dir in $dirs;
+    do
+        cp -P $dir"windows/"$mode/* bin/windows
+    done;
+
+    bin/windows/$EXECUTABLE_NAME\_$mode
+}
+
 function run_linux()
 {
     rm -rf bin/linux
@@ -55,7 +71,7 @@ function run()
 	then
     	run_macos
     else
-        platform="windows";
+        run_windows
     fi
 }
 

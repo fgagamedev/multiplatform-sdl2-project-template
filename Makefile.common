@@ -8,25 +8,26 @@ export COMPONENTS=game engine
 EXTERNAL_LIBS=SDL SDL_image
 
 # Compilation settings
-COMPONENTS_PATHS=$(shell ls -d $(PWD)/$(SUBDIR)/*/)
+COMPONENTS_PATHS=$(subst $(CYGWIN_VOLUME),$(WINDOWS_VOLUME),$(shell ls -d $(PWD)/$(SUBDIR)/*/))
 
 INCLUDES+=$(foreach component,$(COMPONENTS_PATHS),$(INCLUDES_FLAG)$(component)include)
 INCLUDES+=$(foreach component,$(COMPONENTS_PATHS),$(INCLUDES_FLAG)$(component)include/$(PLATFORM))
 
-EXTERNAL_LIBS_PATHS=$(shell ls -d $(PWD)/lib/*/)
+EXTERNAL_LIBS_PATHS=$(subst $(CYGWIN_VOLUME),$(WINDOWS_VOLUME),$(shell ls -d $(PWD)/lib/*/))
 
 export INCLUDES+=$(foreach lib,$(EXTERNAL_LIBS_PATHS),$(INCLUDES_FLAG)$(lib)$(PLATFORM)/include/)
 
 LDFLAGS+=$(foreach component,$(COMPONENTS_PATHS),$(LIBPATH_FLAG)$(component))
 export LDFLAGS+=$(foreach lib,$(EXTERNAL_LIBS_PATHS),$(EXT_LIBPATH_FLAG)$(lib)$(PLATFORM)/$(MODE))
 
-LIBS+=$(foreach component,$(COMPONENTS),$(LIBS_FLAG)$(component)_$(PLATFORM)_$(MODE))
-export LIBS+=$(foreach lib,$(EXTERNAL_LIBS),$(EXT_LIBS_FLAG)$(lib))
+LIBS+=$(foreach component,$(COMPONENTS),$(LIBS_FLAG)$(component)_$(PLATFORM)_$(MODE)$(STATIC_LIB_EXTENSION))
+export LIBS+=$(foreach lib,$(EXTERNAL_LIBS),$(EXT_LIBS_FLAG)$(lib)$(STATIC_LIB_EXTENSION))
 
 # Build subdir
 all: $(SUBDIR)
 
 $(SUBDIR):
-	@cd $@ && $(MAKE) -f Makefile.$(PLATFORM)
+	@echo $(COMPONENTS_PATHS)
+	@cd $@ && $(MAKE) 
 
 .PHONY: all $(SUBDIR)

@@ -17,4 +17,22 @@ endif
 export AR=runlib.bat
 export LINKER=runlink.bat
 
+# Environment variables
+export INCLUDES_FLAG=/I 
+export LIBPATH_FLAG=/LIBPATH:
+export EXT_LIBPATH_FLAG=/LIBPATH:
+export LIBS_FLAG=
+export EXT_LIBS_FLAG=
+export OBJ_OUTPUT_FLAG=/Fo:
+export OUTPUT_FLAG=/OUT:
+export GEN_OBJECT_FLAG=/c
+export STATIC_LIB_EXTENSION=.lib
+export STATIC_LIB_PREFIX=
+export OBJ_EXTENSION=.obj
+export CYGWIN_VOLUME=/cygdrive/d/
+export WINDOWS_VOLUME=D:/
+
+# Platform specific libs
+export EXTRA_LIBS=SDLmain.lib
+
 include Makefile.common
