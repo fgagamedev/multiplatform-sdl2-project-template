@@ -84,6 +84,10 @@
     	</Feature>
     </Feature>
 
+	<UIRef Id="WixUI_InstallDir" />
+	<UIRef Id="WixUI_ErrorProgressText" />
+	<Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
+
     <Icon Id="Test.exe" SourceFile="test.exe" />
 
   </Product>
