@@ -27,25 +27,29 @@ Engine::~Engine()
 int
 Engine::start()
 {
+	cout << "Starting the engine...\n";
+
     int rc = SDL_Init(SDL_INIT_VIDEO);
     pImp->m_started = (rc == 0);
 
     auto *screen = SDL_SetVideoMode(800, 600, 32, SDL_DOUBLEBUF);
     
     if (screen == NULL)
-    	cerr << "Can't initialize SDL video: " << SDL_GetError() << endl;
+    	cout << "Can't initialize SDL video: " << SDL_GetError() << endl;
     else
     {
-        printf("Loading image...\n");
+        cout << "Loading image...\n";
 
         auto path = resources_dir_path() + "images/logo.png";
         auto *img = IMG_Load(path.c_str());
         
         if (img == NULL)
         {
-            cerr << "Can't load logo image:" << SDL_GetError() << endl;
+            cout << "Can't load logo image:" << SDL_GetError() << endl;
         } else
         {
+			cout << "Image loaded\n";
+
             SDL_Rect r;
             r.x = (screen->w - img->w)/2;
             r.y = (screen->h - img->h)/2;

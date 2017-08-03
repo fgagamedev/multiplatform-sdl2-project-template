@@ -44,6 +44,7 @@ bin
 *.idb
 *.pdb
 .tmp
+*.msi
 
 # MacOS files
 *.DS_Store

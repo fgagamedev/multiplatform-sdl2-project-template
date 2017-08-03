@@ -9,5 +9,5 @@ find . -name '*.o' -exec rm -f {} \;
 find . -name '*.a' -exec rm -f {} \;
 find . -name '*~' -exec rm -f {} \;
 find . -name '*.obj' -exec rm -f {} \;
-find . -name '*.lib' -exec rm -f {} \;
+find src/ -name '*.lib' -exec rm -f {} \;
 echo "Done"

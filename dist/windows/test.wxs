@@ -26,11 +26,33 @@
               <File Id='SDLDLL' Name='SDL.dll' DiskId='1' Source='SDL.dll' KeyPath='yes' />
             </Component>
 
+            <Component Id='SDL_image' Guid='b4fda74e-a969-4690-a314-cd4496a1aa5a'>
+              <File Id='SDL_imageDLL' Name='SDL_image.dll' DiskId='1' Source='SDL_image.dll' KeyPath='yes' />
+              <File Id='libjpeg_8DLL' Name='libjpeg-8.dll' DiskId='1' Source='libjpeg-8.dll' />
+              <File Id='libpng15_15DLL' Name='libpng15-15.dll' DiskId='1' Source='libpng15-15.dll' />
+              <File Id='libtiff_5DLL' Name='libtiff-5.dll' DiskId='1' Source='libtiff-5.dll' />
+              <File Id='libwebp_2DLL' Name='libwebp-2.dll' DiskId='1' Source='libwebp-2.dll' />
+              <File Id='zlib1DLL' Name='zlib1.dll' DiskId='1' Source='zlib1.dll' />
+              <File Id='LICENSE.jpeg.TXT' Name='LICENSE.jpeg.txt' DiskId='1' Source='LICENSE.jpeg.txt' />
+              <File Id='LICENSE.png.TXT' Name='LICENSE.png.txt' DiskId='1' Source='LICENSE.png.txt' />
+              <File Id='LICENSE.tiff.TXT' Name='LICENSE.tiff.txt' DiskId='1' Source='LICENSE.tiff.txt' />
+              <File Id='LICENSE.webp.TXT' Name='LICENSE.webp.txt' DiskId='1' Source='LICENSE.webp.txt' />
+              <File Id='LICENSE.zlib.TXT' Name='LICENSE.zlib.txt' DiskId='1' Source='LICENSE.zlib.txt' />
+            </Component>
+
             <Component Id='Manual' Guid='c63e61dd-dd50-493d-9206-cc7f2a329917'>
               <File Id='Manual' Name='Manual.pdf' DiskId='1' Source='Manual.pdf' KeyPath='yes'>
                 <Shortcut Id="startmenuManual" Directory="ProgramMenuDir" Name="Instruction Manual" Advertise="yes" />
               </File>
             </Component>
+
+			<Directory Id='ResourcesDir' Name='resources'>
+				<Directory Id='ImagesDir' Name='images'>
+		            <Component Id='Images' Guid='45ead03c-11ac-4506-b9d2-db22308c21c3'>
+		              <File Id='LogoImage' Name='logo.png' DiskId='1' Source='resources/images/logo.png' KeyPath='yes' />
+		            </Component>
+          		</Directory>
+			</Directory>
 
           </Directory>
         </Directory>
@@ -48,11 +70,18 @@
       <Directory Id="DesktopFolder" Name="Desktop" />
     </Directory>
 
-    <Feature Id='Complete' Level='1'>
-      <ComponentRef Id='MainExecutable' />
-      <ComponentRef Id='SDL' />
-      <ComponentRef Id='Manual' />
-      <ComponentRef Id='ProgramMenuDir' />
+	<Feature Id='Complete' Title='Test 1.0' Description='Package description' Display='expand' Level='1' ConfigurableDirectory='INSTALLDIR'>
+		<Feature Id='MainProgram' Title='Test' Description='The main executable' Level='1'>
+      		<ComponentRef Id='MainExecutable' />
+      		<ComponentRef Id='Images' />
+      		<ComponentRef Id='SDL' />
+      		<ComponentRef Id='SDL_image' />
+      		<ComponentRef Id='ProgramMenuDir' />
+    	</Feature>
+
+		<Feature Id='Documentation' Title='Test docs' Description='The instruction manual' Level='1'>
+			<ComponentRef Id='Manual' />
+    	</Feature>
     </Feature>
 
     <Icon Id="Test.exe" SourceFile="test.exe" />
