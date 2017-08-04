@@ -30,6 +30,7 @@ export GEN_OBJECT_FLAG=/c
 export STATIC_LIB_EXTENSION=.lib
 export STATIC_LIB_PREFIX=
 export STATIC_LIB_SUFFIX=.lib
+export EXTERNAL_LIB_SUFFIX=.lib
 export OBJ_EXTENSION=.obj
 export CYGWIN_VOLUME=/cygdrive/d/
 export WINDOWS_VOLUME=D:/
