@@ -1,10 +1,33 @@
-# Project subdirs
-SUBDIRS=src
+# Project subdir
+SUBDIR=src
 
-# Build all subdirs
-all: $(SUBDIRS)
+# Game components
+export GAME=$(EXECUTABLE_NAME)_$(MODE)
+export COMPONENTS=game engine
 
-$(SUBDIRS):
-	@cd $@ && $(MAKE) -f Makefile.$(PLATFORM)
+EXTERNAL_LIBS=SDL SDL_image
 
-.PHONY: all $(SUBDIRS)
+# Compilation settings
+COMPONENTS_PATHS=$(subst $(CYGWIN_VOLUME),$(WINDOWS_VOLUME),$(shell ls -d $(PWD)/$(SUBDIR)/*/))
+
+INCLUDES+=$(foreach component,$(COMPONENTS_PATHS),$(INCLUDES_FLAG)$(component)include)
+INCLUDES+=$(foreach component,$(COMPONENTS_PATHS),$(INCLUDES_FLAG)$(component)include/$(PLATFORM))
+
+EXTERNAL_LIBS_PATHS=$(subst $(CYGWIN_VOLUME),$(WINDOWS_VOLUME),$(shell ls -d $(PWD)/lib/*/))
+
+export INCLUDES+=$(foreach lib,$(EXTERNAL_LIBS_PATHS),$(INCLUDES_FLAG)$(lib)$(PLATFORM)/include/)
+
+LDFLAGS+=$(foreach component,$(COMPONENTS_PATHS),$(LIBPATH_FLAG)$(component))
+export LDFLAGS+=$(foreach lib,$(EXTERNAL_LIBS_PATHS),$(EXT_LIBPATH_FLAG)$(lib)$(PLATFORM)/$(MODE))
+
+LIBS+=$(foreach component,$(COMPONENTS),$(LIBS_FLAG)$(component)_$(PLATFORM)_$(MODE)$(STATIC_LIB_SUFFIX))
+export LIBS+=$(foreach lib,$(EXTERNAL_LIBS),$(EXT_LIBS_FLAG)$(lib)$(EXTERNAL_LIB_SUFFIX))
+
+# Build subdir
+all: $(SUBDIR)
+
+$(SUBDIR):
+	@echo $(COMPONENTS_PATHS)
+	@cd $@ && $(MAKE) 
+
+.PHONY: all $(SUBDIR)

@@ -16,6 +16,7 @@ Git must be installed on all platforms. The following sections describes the dep
 - fakeroot
 - lintian
 - gzip
+- sed
 
 ### Windows
 
