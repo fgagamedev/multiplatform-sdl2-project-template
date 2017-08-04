@@ -18,4 +18,4 @@ all: $(TARGET)
 
 # Targets
 $(TARGET): $(OBJECTS)
-	$(AR) $(AR_FLAGS) $(OUTPUT_FLAG)$@ $(OBJECTS) 
+	$(AR) $(AR_FLAGS) $(AR_OUTPUT_FLAG)$@ $(OBJECTS) 

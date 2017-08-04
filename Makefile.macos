@@ -16,6 +16,7 @@ endif
 # Tools
 export AR=ar
 export AR_FLAGS=rcs
+export LINKER=clang
 
 # Environment variables
 export INCLUDES_FLAG=-I
@@ -23,10 +24,13 @@ export LIBPATH_FLAG=-L
 export EXT_LIBPATH_FLAG=-F
 export LIBS_FLAG=-l
 export EXT_LIBS_FLAG=-framework 
-export OUTPUT_FLAG=-o
+export OBJ_OUTPUT_FLAG=-o 
+export AR_OUTPUT_FLAG=
+export OUTPUT_FLAG=-o 
 export GEN_OBJECT_FLAG=-c
 export STATIC_LIB_EXTENSION=.a
 export STATIC_LIB_PREFIX=lib
+export STATIC_LIB_SUFFIX=
 export OBJ_EXTENSION=.o
 
 # Platform specific libs

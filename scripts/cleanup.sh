@@ -10,10 +10,11 @@ find . -name '*.a' -exec rm -f {} \;
 find . -name '*~' -exec rm -f {} \;
 find . -name '*.obj' -exec rm -f {} \;
 find . -name '*.deb' -exec rm -f {} \;
+find . -name '*.rpm' -exec rm -f {} \;
 find . -name '*.msi' -exec rm -f {} \;
 
 find src/ -name '*.lib' -exec rm -f {} \;
 
-rm -rf bin/* .tmp
+rm -rf bin/* .tmp .dmg *.dmg
 
 echo "Done"
