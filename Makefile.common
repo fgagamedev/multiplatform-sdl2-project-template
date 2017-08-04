@@ -20,8 +20,8 @@ export INCLUDES+=$(foreach lib,$(EXTERNAL_LIBS_PATHS),$(INCLUDES_FLAG)$(lib)$(PL
 LDFLAGS+=$(foreach component,$(COMPONENTS_PATHS),$(LIBPATH_FLAG)$(component))
 export LDFLAGS+=$(foreach lib,$(EXTERNAL_LIBS_PATHS),$(EXT_LIBPATH_FLAG)$(lib)$(PLATFORM)/$(MODE))
 
-LIBS+=$(foreach component,$(COMPONENTS),$(LIBS_FLAG)$(component)_$(PLATFORM)_$(MODE)$(STATIC_LIB_EXTENSION))
-export LIBS+=$(foreach lib,$(EXTERNAL_LIBS),$(EXT_LIBS_FLAG)$(lib)$(STATIC_LIB_EXTENSION))
+LIBS+=$(foreach component,$(COMPONENTS),$(LIBS_FLAG)$(component)_$(PLATFORM)_$(MODE)$(STATIC_LIB_SUFFIX))
+export LIBS+=$(foreach lib,$(EXTERNAL_LIBS),$(EXT_LIBS_FLAG)$(lib)$(STATIC_LIB_SUFFIX))
 
 # Build subdir
 all: $(SUBDIR)
