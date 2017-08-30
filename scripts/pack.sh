@@ -7,8 +7,12 @@
 platform=`scripts/util/get_platform.sh`
 
 case $platform in
-    "linux")
+    "debian")
         scripts/util/gen_deb.sh
+        ;;
+
+    "rhel")
+        scripts/util/gen_rpm.sh
         ;;
 
     "windows")

@@ -7,7 +7,11 @@ platform=`uname -a`
 
 if [[ "$platform" =~ "Linux" ]];
 then
-    echo "linux";
+	if [[ "`sed '4q;d' /etc/os-release`" =~ "debian" ]]; then
+		echo "debian";
+	else
+		echo "rhel"
+	fi
 elif [[ "$platform" =~ "Darwin" ]];
 then
     echo "macos";

@@ -9,7 +9,7 @@ mode=$1
 game=$EXECUTABLE_NAME
 
 function run_windows()
-{    
+{
 	rm -rf bin/windows
     mkdir -p bin/windows
     ln -f src/$EXECUTABLE_NAME\_$mode bin/windows
@@ -28,7 +28,7 @@ function run_linux()
 {
     rm -rf bin/linux
     mkdir -p bin/linux
-    ln -f src/$EXECUTABLE_NAME\_$mode bin/linux
+    cp src/$EXECUTABLE_NAME\_$mode bin/linux
 
     dirs=`ls -d lib/*/`
 
@@ -43,19 +43,19 @@ function run_linux()
 function run_macos()
 {
 	rm -rf bin/macos
-	
+
 	mkdir -p bin/macos/MacOS
 	ln -f src/$game\_$mode bin/macos/MacOS/
-	
+
 	mkdir -p bin/macos/Frameworks
-	
+
 	dirs=`ls -d lib/*/`
-	
+
 	for dir in $dirs;
     do
         cp -r $dir"macos/"$mode/* bin/macos/Frameworks/
     done;
-    
+
     ln -s $(PWD)/resources bin/macos/Resources
 	bin/macos/MacOS/$game\_$mode
 }
@@ -82,12 +82,8 @@ case $mode in
         run
         ;;
 
-    "debug")
-        echo "Running the debug version..."
-        run
-        ;;
-
     *)
-        echo "Usage: run.sh [debug|release]"
-        exit 1
+        echo "Running the debug version. Use 'run.sh release' to run the release version"
+        mode='debug'
+        run
 esac
