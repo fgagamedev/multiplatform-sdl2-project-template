@@ -30,7 +30,7 @@
 *.exe
 *.out
 *.app
-src/fga-ije
+src/template-test
 
 # Swap files
 *~
@@ -52,7 +52,7 @@ bin
 *.dmg
 
 # Linux files
-src/fga-ije_debug
-src/fga-ije_release
+src/template-test_debug
+src/template-test_release
 *.deb
 *.rpm
