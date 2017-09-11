@@ -15,7 +15,7 @@ function build()
         platform="linux";
     elif [[ "$platform" =~ "Darwin" ]];
 	then
-    	platform="macos";	
+    	platform="macos";
     else
         platform="windows";
     fi
@@ -30,12 +30,10 @@ case $mode in
         build
         ;;
 
-    "debug")
-        echo "Building the debug version..."
-        build
-        ;;
-
     *)
-        echo "Usage: build.sh [debug|release]"
+        echo "Use: 'build.sh release' to run the release version"
+        echo "Building the debug version..."
+        mode='debug'
+        build
         exit 1
 esac

@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+	config.vm.box = "bento/ubuntu-14.04"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -67,7 +67,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get install vim-gtk git -y
-    apt-get install xfce4 tango-icon-theme tango-icon-theme-extras gnome-icon-theme
-    apt-get install build-essential lintian
+    apt-get install xfce4 tango-icon-theme tango-icon-theme-extras gnome-icon-theme -y
+    apt-get install build-essential lintian -y
   SHELL
 end
