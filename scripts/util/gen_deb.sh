@@ -52,10 +52,10 @@ function gen_deb()
     # Debian package info dir
     mkdir -p $tmp_dir/DEBIAN
     cp dist/linux/debian/control $tmp_dir/DEBIAN/
-    sed -i -- 's/%%PACKAGE_NAME%%/'$PACKAGE_NAME'/' $tmp_dir/DEBIAN/control
-    sed -i -- 's/%%PACKAGE_VERSION%%/'$PACKAGE_VERSION'/' $tmp_dir/DEBIAN/control
-    sed -i -- 's/%%MAINTAINER_NAME%%/'$MAINTAINER_NAME'/' $tmp_dir/DEBIAN/control
-    sed -i -- 's/%%MAINTAINER_CONTACT%%/'$MAINTAINER_CONTACT'/' $tmp_dir/DEBIAN/control
+    sed -i -- 's/%%PACKAGE_NAME%%/'"$PACKAGE_NAME"'/' $tmp_dir/DEBIAN/control
+    sed -i -- 's/%%PACKAGE_VERSION%%/'"$PACKAGE_VERSION"'/' $tmp_dir/DEBIAN/control
+    sed -i -- 's/%%MAINTAINER_NAME%%/'"$MAINTAINER_NAME"'/' $tmp_dir/DEBIAN/control
+    sed -i -- 's/%%MAINTAINER_CONTACT%%/'"$MAINTAINER_CONTACT"'/' $tmp_dir/DEBIAN/control
     sed -i -- 's/%%GAME_DESCRIPTION%%/'"$GAME_DESCRIPTION"'/' $tmp_dir/DEBIAN/control
 
     # Documentation
@@ -65,14 +65,14 @@ function gen_deb()
 
     cp changelog $doc_dir/changelog.Debian
     cp LICENSE $doc_dir/copyright
-    gzip -9 $doc_dir/changelog.Debian
+    gzip -n9 $doc_dir/changelog.Debian
 
     man_dir=$share_dir/man
     section_dir=$man_dir/man6
     mkdir -p $section_dir
 
-    cp dist/linux/debian/$PACKAGE_NAME.6 $section_dir/
-    gzip -9 $section_dir/$PACKAGE_NAME.6
+    cp dist/linux/debian/template-test.6 $section_dir/$PACKAGE_NAME.6
+    gzip -n9 $section_dir/$PACKAGE_NAME.6
 
     # Set the permissions
     scripts/util/set_permissions.sh $tmp_dir

@@ -19,7 +19,8 @@ function gen_rpm()
 
     # Preparing the spec file
     spec_file=$PACKAGE_NAME.spec
-    cp dist/linux/redhat/$spec_file ~/rpmbuild/SPECS
+    cp dist/linux/redhat/template-test.spec ~/rpmbuild/SPECS/$spec_file
+    cp dist/linux/debian/template-test.6 dist/linux/debian/$PACKAGE_NAME.6
 
     sed -i -- 's/%%PACKAGE_NAME%%/'$PACKAGE_NAME'/g' ~/rpmbuild/SPECS/$spec_file
     sed -i -- 's/%%VERSION_MAJOR%%/'$VERSION_MAJOR'/g' ~/rpmbuild/SPECS/$spec_file
@@ -34,7 +35,7 @@ function gen_rpm()
     rm -rf /tmp/$PACKAGE_NAME-$VERSION_MAJOR.$VERSION_MINOR
     mkdir -p /tmp/$PACKAGE_NAME-$VERSION_MAJOR.$VERSION_MINOR
     cp -r * /tmp/$PACKAGE_NAME-$VERSION_MAJOR.$VERSION_MINOR/
-    cd /tmp && tar -czpf ${PACKAGE_NAME}.tar.gz $PACKAGE_NAME-$VERSION_MAJOR.$VERSION_MINOR/ 
+    cd /tmp && tar -czpf ${PACKAGE_NAME}.tar.gz $PACKAGE_NAME-$VERSION_MAJOR.$VERSION_MINOR/
     cp /tmp/${PACKAGE_NAME}.tar.gz ~/rpmbuild/SOURCES/
 
     # Build and check the package

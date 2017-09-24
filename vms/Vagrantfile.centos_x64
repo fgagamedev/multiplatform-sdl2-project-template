@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     vb.gui = true
-  
+
     # Customize the amount of memory on the VM:
     vb.memory = "2048"
   end
@@ -66,8 +66,8 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     yum update
-    yum -y groups install "KDE Plasma Workspaces" 
-    yum -y install git 
+    yum -y groups install "GNOME Desktop"
+    yum -y install git
     yum -y install gvim
     yum -y install gcc-c++
     yum -y install rpmdevtools rpmlint

@@ -9,7 +9,7 @@ URL: https://github.com/fgagamedev/multiplatform-sdl2-project-template
 Source0: %{name}.tar.gz
 
 BuildRoot: %{_tmppath}/%{name}-root
-Provides: libSDL-1.2.so.0()(64bit) libcaca.so.0
+AutoReq: no
 
 %description
 Long package description
@@ -47,9 +47,13 @@ gzip -9 %{buildroot}/%{_mandir}/man6/%%PACKAGE_NAME%%.6
 # Set the correct permissions for shared libraries
 find %{buildroot} -type f \( -name '*.so' -o -name '*.so.*' \) -exec chmod 755 {} \;
 
-%post -p /sbin/ldconfig
+%post
+/sbin/ldconfig
+ln -s /usr/games/%%PACKAGE_NAME%% /usr/bin/
 
-%postun -p /sbin/ldconfig
+%postun
+/sbin/ldconfig
+rm /usr/bin/%%PACKAGE_NAME%%
 
 %files
 %defattr(644,root,root)
@@ -61,5 +65,5 @@ find %{buildroot} -type f \( -name '*.so' -o -name '*.so.*' \) -exec chmod 755 {
 %doc %{_mandir}/man6/%%PACKAGE_NAME%%.6.gz
 
 %changelog
-* Fri Jul 21 2017 Edson Alves <edsomjr@gmail.com>  - 1.0-1%{?dist}
+* Fri Jul 21 2017 Edson Alves <edsomjr@gmail.com>  - 0.0-1%{?dist}
 - Fixing several rpmlintian errors and warnings
