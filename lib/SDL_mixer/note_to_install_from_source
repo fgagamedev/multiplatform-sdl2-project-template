@@ -1,0 +1,5 @@
+Note:
+
+If you decide to compile from source, install first the libraries to open mp3 and ogg:
+libvorbis (for .ogg support),
+SMPEG or MAD libs (for mp3 support)
