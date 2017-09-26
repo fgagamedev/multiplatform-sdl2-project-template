@@ -5,7 +5,8 @@ SUBDIR=src
 export GAME=$(EXECUTABLE_NAME)_$(MODE)
 export COMPONENTS=game engine
 
-EXTERNAL_LIBS=SDL SDL_image
+EXTERNAL_LIBS=SDL2 SDL2_image SDL2_ttf SDL2_mixer
+
 
 # Compilation settings
 COMPONENTS_PATHS=$(subst $(CYGWIN_VOLUME),$(WINDOWS_VOLUME),$(shell ls -d $(PWD)/$(SUBDIR)/*/))
@@ -28,6 +29,6 @@ all: $(SUBDIR)
 
 $(SUBDIR):
 	@echo $(COMPONENTS_PATHS)
-	@cd $@ && $(MAKE) 
+	@cd $@ && $(MAKE)
 
 .PHONY: all $(SUBDIR)
