@@ -6,26 +6,34 @@
 # Include project metadata
 . metadata.ini
 
+WXS_PATH="dist/windows/$PACKAGE_NAME.wxs"
 OUTPUT_FILE=$EXECUTABLE_NAME.exe
 PACKAGE_VERSION=$VERSION_MAJOR.$VERSION_MINOR.$VERSION_RELEASE
 
-function gen_exe()
-{
+function gen_exe() {
+	rm -rf bin/windows
+	mkdir -p bin/windows
+
+	for DIR in $(ls lib);
+	do
+		cp -P lib/$DIR/windows/release/* bin/windows
+	done;
+
+	if ! [ -e $WXS_PATH ];
+	then
+		scripts/util/gen_wxs.sh
+	fi
+
 	mkdir -p .tmp
 	cp -u src/$EXECUTABLE_NAME\_release .tmp/$OUTPUT_FILE
-	cp -u lib/SDL/windows/release/*.dll .tmp/
-	cp -u lib/SDL_image/windows/release/*.dll .tmp/
-	cp -u lib/SDL_image/windows/release/LICENSE* .tmp/
-	cp -f dist/windows/template-test.wxs .tmp/$PACKAGE_NAME.wxs
-	cp -u dist/windows/Manual.pdf .tmp/
+
+	cp -u bin/windows/* .tmp/
+	cp -f $WXS_PATH .tmp/
+
+	# cp -u dist/windows/Manual.pdf .tmp/
 	cp -ur resources .tmp/
 
 	cd .tmp
-    sed -i -- 's/%%OUTPUT_FILE%%/'"$OUTPUT_FILE"'/g' $PACKAGE_NAME.wxs
-    sed -i -- 's/%%PACKAGE_NAME%%/'"$PACKAGE_NAME"'/g' $PACKAGE_NAME.wxs
-    sed -i -- 's/%%PACKAGE_VERSION%%/'"$PACKAGE_VERSION"'/g' $PACKAGE_NAME.wxs
-    sed -i -- 's/%%MAINTAINER_NAME%%/'"$MAINTAINER_NAME"'/g' $PACKAGE_NAME.wxs
-    sed -i -- 's/%%GAME_DESCRIPTION%%/'"$GAME_DESCRIPTION"'/g' $PACKAGE_NAME.wxs
 
 	candle.exe $PACKAGE_NAME.wxs
 	light.exe -sice:ICE60 -ext WixUIExtension $PACKAGE_NAME.wixobj

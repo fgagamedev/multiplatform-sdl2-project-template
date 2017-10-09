@@ -35,6 +35,5 @@ export OBJ_EXTENSION=.o
 
 # Platform specific libs
 export EXTRA_LIBS=
-# -static -static-libgcc -static-libstdc++
 
 include Makefile.common
