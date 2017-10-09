@@ -19,8 +19,8 @@ function gen_rpm()
 
     # Preparing the spec file
     spec_file=$PACKAGE_NAME.spec
-    cp dist/linux/redhat/template-test.spec ~/rpmbuild/SPECS/$spec_file
-    cp dist/linux/debian/template-test.6 dist/linux/debian/$PACKAGE_NAME.6
+    cp dist/linux/redhat/templateTest.spec ~/rpmbuild/SPECS/$spec_file
+    cp dist/linux/debian/templateTest.6 dist/linux/debian/$PACKAGE_NAME.6
 
     sed -i -- 's/%%PACKAGE_NAME%%/'$PACKAGE_NAME'/g' ~/rpmbuild/SPECS/$spec_file
     sed -i -- 's/%%VERSION_MAJOR%%/'$VERSION_MAJOR'/g' ~/rpmbuild/SPECS/$spec_file

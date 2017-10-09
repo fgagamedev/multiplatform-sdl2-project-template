@@ -30,7 +30,7 @@
 *.exe
 *.out
 *.app
-src/template-test
+src/templateTest
 
 # Swap files
 *~
@@ -52,7 +52,7 @@ bin
 *.dmg
 
 # Linux files
-src/template-test_debug
-src/template-test_release
+src/templateTest_debug
+src/templateTest_release
 *.deb
 *.rpm

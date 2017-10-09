@@ -2,8 +2,6 @@
 #
 # Identify the platform and run the matching Makefile
 #
-
-# Main
 platform=`scripts/util/get_platform.sh`
 
 # Run build release to check if there's a release version of the game.

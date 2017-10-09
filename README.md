@@ -5,7 +5,7 @@ A multiplatform SDL2 project template for game development.
 ## Dependencies
 
 Git must be installed on all platforms. The following sections describes the dependencies on each platform.
-    
+
 ### Linux
 
 - GNU Make
@@ -20,7 +20,7 @@ Git must be installed on all platforms. The following sections describes the dep
 
 ### Windows
 
-- Cygwin (GNU Make must be installed)
+- Cygwin (GNU Make, x86_64-w64-mingw32-g++.exe and x86_64-w64-mingw32-ar.exe must be installed)
 - Visual Studio (cl.exe, lib.exe and link.exe)
 - WiX (installer, provides candle.exe and light.exe)
 
