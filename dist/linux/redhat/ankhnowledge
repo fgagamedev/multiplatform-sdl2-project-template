@@ -1,0 +1,2 @@
+#!/bin/bash
+export LD_LIBRARY_PATH=/var/games/ankhnowledge/lib && cd /var/games/ankhnowledge/ && ./ankhnowledge
