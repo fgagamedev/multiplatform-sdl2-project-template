@@ -16,6 +16,13 @@ function get_uuid(){
 	echo $UUID
 }
 
+function clean_id(){
+	ID=${1//\//_} # Replace backslash with underscore
+	ID=${ID//-/_} # Replace minus with underscore
+	ID=${ID//+/_} # Replace plus with underscore
+	echo $ID
+}
+
 COMPONENT_IDS="MainExecutable "
 
 function create_directory_file() {
@@ -38,9 +45,7 @@ EOF
 
 function append_file_tag() {
 	FILE_NAME=$1
-	ID=${1//\//_} # Replace backslash with underscore
-	ID=${ID//-/_} # Replace minus with underscore
-	ID=${ID//+/_} # Replace plus with underscore
+	ID=`clean_id $1`
 	cat >> $WXS_PATH <<EOF
 	<File
 		Id="_${ID^^}"
@@ -51,9 +56,7 @@ EOF
 }
 
 function append_icon_tag() {
-	ID=${ICON_FILE//\//_} # Replace backslash with underscore
-	ID=${ID//-/_} # Replace minus with underscore
-	ID=${ID//+/_} # Replace plus with underscore
+	ID=`clean_id $ICON_FILE`
 	cat >> $WXS_PATH <<EOF
 	<Icon Id="$ID" SourceFile="resources/$ICON_FILE" />
 EOF
@@ -62,7 +65,7 @@ EOF
 
 function append_component_tag() {
 	FILE_NAME=$1
-	ID="_${FILE_NAME^^}"
+	ID=`clean_id $1`
 	COMPONENT_IDS+="$ID "
 	cat >> $WXS_PATH <<EOF
 	<Component Id="$ID" Guid="`get_uuid`" KeyPath='yes'>
@@ -123,10 +126,8 @@ function check_directory_for_file() {
 	for FILE in $(ls $BASE_DIR);
 	do
 		FILE_PATH="$BASE_DIR/$FILE"
-		echo $FILE_PATH
 		if [ -d $FILE_PATH ];
 		then
-			echo "+++++++++++++++++++"
 			append_directory_tag $FILE
 			check_directory_for_file $FILE_PATH
 			close_tag "Directory"
@@ -136,6 +137,7 @@ function check_directory_for_file() {
 			close_tag "Component"
 		fi
 	done
+	BASE_DIR=${BASE_DIR%/*}
 }
 
 function gen_header() {
