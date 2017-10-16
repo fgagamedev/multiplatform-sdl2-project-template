@@ -71,7 +71,7 @@ function gen_deb()
     section_dir=$man_dir/man6
     mkdir -p $section_dir
 
-    cp dist/linux/debian/template-test.6 $section_dir/$PACKAGE_NAME.6
+    cp dist/linux/debian/templateTest.6 $section_dir/$PACKAGE_NAME.6
     gzip -n9 $section_dir/$PACKAGE_NAME.6
 
     # Set the permissions

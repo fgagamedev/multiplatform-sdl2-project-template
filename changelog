@@ -1,10 +1,10 @@
-template-test (1.0-2) unstable; urgency=low
+templateTest (1.0-2) unstable; urgency=low
 
   * Fixing several lintian errors and warnings
 
  -- Edson Alves <edsomjr@gmail.com>  Wed, 12 Jul 2017 15:14:26 -0300
 
-template-test (1.0-1) unstable; urgency=low
+templateTest (1.0-1) unstable; urgency=low
 
   * Initial release
     + Building and packing for Linux distros

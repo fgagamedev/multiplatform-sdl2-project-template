@@ -1,0 +1,314 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+	<Product
+		Name="templateTest 1.0.1"
+		Id="54DAF681-2D8C-4210-91BD-6D6AED3EA7C7"
+		UpgradeCode="50D8CF37-9E4D-4717-8550-4E517C5C5742"
+		Language='1046'
+		Codepage='1252'
+		Version="1.0.1"
+		Manufacturer='UnB Games'>
+	<Package
+		Id='*'
+		Keywords='Installer'
+		Description="templateTest 1.0.1 installer"
+		Manufacturer='UnB Games'
+		InstallerVersion='100'
+		Languages='1046'
+		SummaryCodepage='1252'
+		Compressed='yes'/>
+
+		<Media
+			Id='1'
+			Cabinet='templateTest.cab'
+			EmbedCab='yes'
+			DiskPrompt="Disk #1"
+		/>
+
+		<Property
+			Id='DiskPrompt'
+			Value="templateTest 1.0.1 Installation [1]"
+		/>
+		<Directory Id='TARGETDIR' Name='SourceDir'>
+			<Directory Id='ProgramFilesFolder' Name='PFiles'>
+				<Directory Id='UnBGames' Name='UnB Games'>
+					<Directory Id='INSTALLDIR' Name="templateTest 1.0.1">
+						<Component Id='MainExecutable' Guid="5BCBBD55-C5FD-479F-B38E-66232500DAB0">
+							<File
+								Id="templateTest"
+								Name="templateTest.exe"
+								DiskId='1'
+								Vital='yes'
+								Source="templateTest.exe"
+								KeyPath='yes'>
+							</File>
+	<Shortcut
+		Id="ProgramMenuDirtemplateTest"
+		Directory="ProgramMenuDir"
+		Name="templateTest 1.0.1"
+		WorkingDirectory='INSTALLDIR'
+		Icon="icon.ico"
+		IconIndex="0"
+		Advertise="yes"/>
+	<Shortcut
+		Id="DESKTOPFOLDERDIRtemplateTest"
+		Directory="DESKTOPFOLDERDIR"
+		Name="templateTest 1.0.1"
+		WorkingDirectory='INSTALLDIR'
+		Icon="icon.ico"
+		IconIndex="0"
+		Advertise="yes"/>
+	</Component>
+	<Component Id="SDL" Guid="BD2F2C93-5B48-4CB5-88C2-EA57D9680259" KeyPath='yes'>
+	<File
+		Id="_LIBFLAC_8.DLL"
+		Name="libFLAC-8.dll"
+		DiskId='1'
+		Source="libFLAC-8.dll"/>
+	<File
+		Id="_LIBFREETYPE_6.DLL"
+		Name="libfreetype-6.dll"
+		DiskId='1'
+		Source="libfreetype-6.dll"/>
+	<File
+		Id="_LIBGCC_S_SEH_1.DLL"
+		Name="libgcc_s_seh-1.dll"
+		DiskId='1'
+		Source="libgcc_s_seh-1.dll"/>
+	<File
+		Id="_LIBJPEG_8.DLL"
+		Name="libjpeg-8.dll"
+		DiskId='1'
+		Source="libjpeg-8.dll"/>
+	<File
+		Id="_LIBMIKMOD_2.DLL"
+		Name="libmikmod-2.dll"
+		DiskId='1'
+		Source="libmikmod-2.dll"/>
+	<File
+		Id="_LIBOGG_0.DLL"
+		Name="libogg-0.dll"
+		DiskId='1'
+		Source="libogg-0.dll"/>
+	<File
+		Id="_LIBPNG15_15.DLL"
+		Name="libpng15-15.dll"
+		DiskId='1'
+		Source="libpng15-15.dll"/>
+	<File
+		Id="_LIBSTDC___6.DLL"
+		Name="libstdc++-6.dll"
+		DiskId='1'
+		Source="libstdc++-6.dll"/>
+	<File
+		Id="_LIBTIFF_5.DLL"
+		Name="libtiff-5.dll"
+		DiskId='1'
+		Source="libtiff-5.dll"/>
+	<File
+		Id="_LIBVORBIS_0.DLL"
+		Name="libvorbis-0.dll"
+		DiskId='1'
+		Source="libvorbis-0.dll"/>
+	<File
+		Id="_LIBVORBISFILE_3.DLL"
+		Name="libvorbisfile-3.dll"
+		DiskId='1'
+		Source="libvorbisfile-3.dll"/>
+	<File
+		Id="_LIBWEBP_2.DLL"
+		Name="libwebp-2.dll"
+		DiskId='1'
+		Source="libwebp-2.dll"/>
+	<File
+		Id="_LIBWINPTHREAD_1.DLL"
+		Name="libwinpthread-1.dll"
+		DiskId='1'
+		Source="libwinpthread-1.dll"/>
+	<File
+		Id="_LICENSE.FLAC.TXT"
+		Name="LICENSE.FLAC.txt"
+		DiskId='1'
+		Source="LICENSE.FLAC.txt"/>
+	<File
+		Id="_LICENSE.FREETYPE.TXT"
+		Name="LICENSE.freetype.txt"
+		DiskId='1'
+		Source="LICENSE.freetype.txt"/>
+	<File
+		Id="_LICENSE.JPEG.TXT"
+		Name="LICENSE.jpeg.txt"
+		DiskId='1'
+		Source="LICENSE.jpeg.txt"/>
+	<File
+		Id="_LICENSE.MIKMOD.TXT"
+		Name="LICENSE.mikmod.txt"
+		DiskId='1'
+		Source="LICENSE.mikmod.txt"/>
+	<File
+		Id="_LICENSE.OGG_VORBIS.TXT"
+		Name="LICENSE.ogg-vorbis.txt"
+		DiskId='1'
+		Source="LICENSE.ogg-vorbis.txt"/>
+	<File
+		Id="_LICENSE.PNG.TXT"
+		Name="LICENSE.png.txt"
+		DiskId='1'
+		Source="LICENSE.png.txt"/>
+	<File
+		Id="_LICENSE.SMPEG.TXT"
+		Name="LICENSE.smpeg.txt"
+		DiskId='1'
+		Source="LICENSE.smpeg.txt"/>
+	<File
+		Id="_LICENSE.TIFF.TXT"
+		Name="LICENSE.tiff.txt"
+		DiskId='1'
+		Source="LICENSE.tiff.txt"/>
+	<File
+		Id="_LICENSE.WEBP.TXT"
+		Name="LICENSE.webp.txt"
+		DiskId='1'
+		Source="LICENSE.webp.txt"/>
+	<File
+		Id="_LICENSE.ZLIB.TXT"
+		Name="LICENSE.zlib.txt"
+		DiskId='1'
+		Source="LICENSE.zlib.txt"/>
+	<File
+		Id="_README_SDL.TXT"
+		Name="README-SDL.txt"
+		DiskId='1'
+		Source="README-SDL.txt"/>
+	<File
+		Id="_SDL.DLL"
+		Name="SDL.dll"
+		DiskId='1'
+		Source="SDL.dll"/>
+	<File
+		Id="_SDL.LIB"
+		Name="SDL.lib"
+		DiskId='1'
+		Source="SDL.lib"/>
+	<File
+		Id="_SDL_IMAGE.DLL"
+		Name="SDL_image.dll"
+		DiskId='1'
+		Source="SDL_image.dll"/>
+	<File
+		Id="_SDL_IMAGE.LIB"
+		Name="SDL_image.lib"
+		DiskId='1'
+		Source="SDL_image.lib"/>
+	<File
+		Id="_SDL_MIXER.DLL"
+		Name="SDL_mixer.dll"
+		DiskId='1'
+		Source="SDL_mixer.dll"/>
+	<File
+		Id="_SDL_MIXER.LIB"
+		Name="SDL_mixer.lib"
+		DiskId='1'
+		Source="SDL_mixer.lib"/>
+	<File
+		Id="_SDL_NET.DLL"
+		Name="SDL_net.dll"
+		DiskId='1'
+		Source="SDL_net.dll"/>
+	<File
+		Id="_SDL_NET.LIB"
+		Name="SDL_net.lib"
+		DiskId='1'
+		Source="SDL_net.lib"/>
+	<File
+		Id="_SDL_TTF.DLL"
+		Name="SDL_ttf.dll"
+		DiskId='1'
+		Source="SDL_ttf.dll"/>
+	<File
+		Id="_SDL_TTF.LIB"
+		Name="SDL_ttf.lib"
+		DiskId='1'
+		Source="SDL_ttf.lib"/>
+	<File
+		Id="_SDLMAIN.LIB"
+		Name="SDLmain.lib"
+		DiskId='1'
+		Source="SDLmain.lib"/>
+	<File
+		Id="_SMPEG.DLL"
+		Name="smpeg.dll"
+		DiskId='1'
+		Source="smpeg.dll"/>
+	<File
+		Id="_ZLIB1.DLL"
+		Name="zlib1.dll"
+		DiskId='1'
+		Source="zlib1.dll"/>
+	</Component>
+	<Directory Id="RESOURCESDIR" Name="resources">
+	<Component Id="icon.ico" Guid="F340B020-D82D-4885-B3BE-4651BF4B5983" KeyPath='yes'>
+	<File
+		Id="_RESOURCES_ICON.ICO"
+		Name="icon.ico"
+		DiskId='1'
+		Source="resources/icon.ico"/>
+	</Component>
+	<Directory Id="IMAGESDIR" Name="images">
+	<Component Id="logo.png" Guid="964DD0E4-E1AD-46D1-AD94-F9916EDBE75E" KeyPath='yes'>
+	<File
+		Id="_RESOURCES_IMAGES_LOGO.PNG"
+		Name="logo.png"
+		DiskId='1'
+		Source="resources/images/logo.png"/>
+	</Component>
+	</Directory>
+	</Directory>
+	<Directory Id="ProgramMenuFolder" Name="Programs">
+		<Directory Id="ProgramMenuDir" Name="templateTest 1.0.1">
+			<Component Id="ProgramMenuDir" Guid="D63B2A96-2702-46CF-A6D2-4EBF18B1D83F">
+				<RemoveFolder
+					Id='ProgramMenuDir'
+					On='uninstall'/>
+				<RegistryValue
+					Root='HKCU'
+					Key='Software\[Manufacturer]\[ProductName]'
+					Type='string'
+					Value=''
+					KeyPath='yes'/>
+			</Component>
+		</Directory>
+	</Directory>
+	<Directory Id="DESKTOPFOLDERDIR" Name="DesktopFolder">
+	</Directory>
+	</Directory>
+	</Directory>
+	</Directory>
+	</Directory>
+	<Feature
+		Id="Complete"
+		Title='templateTest%% 1.0.1%%'
+		Description='Game short description'
+		Display='expand'
+		Level='1'
+		ConfigurableDirectory='INSTALLDIR'>
+	<Feature
+		Id="MainExecutable"
+		Title='templateTest%% 1.0.1%%'
+		Description='Game short description'
+		Display='expand'
+		Level='1'
+		ConfigurableDirectory='INSTALLDIR'>
+	<ComponentRef Id="MainExecutable" />
+	<ComponentRef Id="SDL" />
+	<ComponentRef Id="icon.ico" />
+	<ComponentRef Id="logo.png" />
+	<ComponentRef Id="ProgramMenuDir" />
+	</Feature>
+	</Feature>
+	<UIRef Id="WixUI_InstallDir" />
+	<UIRef Id="WixUI_ErrorProgressText" />
+	<Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
+	<Icon Id="icon.ico" SourceFile="resources/icon.ico" />
+	</Product>
+	</Wix>
